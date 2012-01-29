@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <title><%=h @post.title %> - Site title</title>
+  </head>
+  <body>
+    <h1><%=h @post.title %></h1>
+    <div class="body"><%= @post.body %></div>
+    <% @post.comments.each do |comment| %>
+      <div class="comment">
+        <h2>Title: <%= comment.title %></h2>
+        <div><%= comment.summary %></div>
+        <a class="cool" href="/comments/<%=h comment.id %>">View more</a>
+      </div>
+    <% end %>
+    <% unless @post.comments.empty? %>
+      <p id="no-comments">There aren't any comments for this post.</p>
+    <% end %>
+  </body>
+</html>
